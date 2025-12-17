@@ -8,9 +8,9 @@ import psutil
 import platform
 import os
 import socket
-
-# gpu info
 import GPUtil
+
+# i need to find amd and intel one because GPUtil only works for nvidia
 
 def get_size(bytes, suffix="B"):
     """
@@ -73,7 +73,7 @@ for gpu in gpus:
     gpu_uuid = gpu.uuid
     
 
-message = f"BOO!\nName: {name}\nDate: {today} \n cpu usage {cpu}% \n ram usage {ram_usage}% \n system {os} \n system version {os_Ver} \n Processor {uname.processor} \n architecture {uname.machine} \n Local IP {local_ip} \n cores {total_Cores} \n {gpu.name} \n {gpu.memoryTotal}"
+message = f"BOO!\nName: {name}\nDate: {today} \n cpu usage {cpu}% \n ram usage {ram_usage}% \n system {os} \n system version {os_Ver} \n Processor {uname.processor} \n architecture {uname.machine} \n Local IP {local_ip} \n cores {total_Cores} \n {gpu.name} \n {gpu.memoryTotal} \n {gpu.memoryUsed}"
 
 cowsay.cow(message)
 
@@ -109,6 +109,3 @@ cowsay.cow(message)
 #print(f"Free: {get_size(swap.free)}")
 #print(f"Used: {get_size(swap.used)}")
 #print(f"Percentage: {swap.percent}%")
-
-
-
